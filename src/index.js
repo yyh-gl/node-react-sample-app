@@ -61,6 +61,7 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
+    // const は再代入不可であるが、格納されているものが参照型（配列とかハッシュなど）の場合は最大入荷脳
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -89,6 +90,7 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
+    // map() の第一引数に history の各要素、第二引数にインデックスが入る
     const moves = history.map((step, move) => {
       const desc = move ?
         'Move #' + move :
